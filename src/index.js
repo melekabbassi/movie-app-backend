@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const movieController = require('../src/controlles/Movies');
 const userController = require('../src/controlles/Users');
 
-// npm run dev to run the server
+// "npm run dev" to run the server
 
 mongoose.connect('mongodb+srv://Octopus:KvIRFsLQ3lemWdrP@movie-app-cluster.hhvvy.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true })
         .then(() => {
