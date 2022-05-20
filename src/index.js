@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+let cors = require('cors');
 const movieController = require('../src/controlles/Movies');
 const userController = require('../src/controlles/Users');
 
@@ -9,6 +10,7 @@ mongoose.connect('mongodb+srv://Octopus:KvIRFsLQ3lemWdrP@movie-app-cluster.hhvvy
         .then(() => {
             const app = express();
             app.use(express.json());
+            app.use(cors());
 
             app.get("/movies", movieController.findMovies);
             app.post("/movies", movieController.createMovie);
