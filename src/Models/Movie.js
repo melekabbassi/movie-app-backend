@@ -1,3 +1,4 @@
+const { links } = require('express/lib/response');
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
@@ -5,7 +6,8 @@ const schema = new mongoose.Schema({
     description: String,
     year: Number,
     poster: String,
-    rating: Number
+    rating: Number,
+    trailer: String
 });
 
 module.exports = mongoose.model('Movie', schema);
