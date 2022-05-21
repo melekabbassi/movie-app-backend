@@ -4,7 +4,7 @@ const schema = new mongoose.Schema({
     title: String,
     description: String,
     year: Number,
-    image: String,
+    poster: String,
     rating: Number
 });
 
