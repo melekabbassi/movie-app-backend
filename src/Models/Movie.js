@@ -7,7 +7,8 @@ const schema = new mongoose.Schema({
     year: Number,
     poster: String,
     rating: Number,
-    trailer: String
+    trailer: String,
+    isFavorite: Boolean
 });
 
 module.exports = mongoose.model('Movie', schema);
