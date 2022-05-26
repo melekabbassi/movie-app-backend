@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 let cors = require('cors');
-const movieController = require('../src/controlles/Movies');
-const userController = require('../src/controlles/Users');
+const movieController = require('./controlles/Movies');
+const userController = require('./controlles/Users');
 
 // "npm run dev" to run the server
 
