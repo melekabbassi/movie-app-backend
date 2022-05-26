@@ -1,32 +1,23 @@
+require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
-let cors = require('cors');
-const movieController = require('../src/controlles/Movies');
-const userController = require('../src/controlles/Users');
+const app = express();
+const cors = require('cors');
+const connection = require('./db');
+const userRoutes = require('./routes/users');
+const authRoutes = require('./routes/auth');
 
-// "npm run dev" to run the server
+// connect to the database
+connection();
 
-mongoose.connect('mongodb+srv://Octopus:KvIRFsLQ3lemWdrP@movie-app-cluster.hhvvy.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true })
-        .then(() => {
-            const app = express();
-            app.use(express.json());
-            app.use(cors());
+// middlewares
+app.use(express.json());
+app.use(cors());
 
-            app.get("/movies", movieController.findMovies);
-            app.post("/movies", movieController.createMovie);
-            app.get("/movies/:id", movieController.findMovie);
-            app.patch("/movies/:id", movieController.updateMovie);
-            app.delete("/movies/:id", movieController.deleteMovie);
+// routes
+app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
 
-            app.post("/users/register", userController.register);
-            app.post("/users/login", userController.login);
-            app.get("/users/:id", userController.findUser);
-            app.get("/users", userController.findUsers);
-            app.patch("/users/:id", userController.updateUser);
-            app.delete("/users/:id", userController.deleteUser);
+app.listen(3000, () => {
+    console.log(`Server is running on port ${3000}`);
+});
 
-
-            app.listen(3000, () => {
-                console.log('Server is running on port 3000');
-            });
-        })
